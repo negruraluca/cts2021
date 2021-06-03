@@ -4,7 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import ro.acs.cts.categorii.TestGetPromovabilitate;
+import ro.acs.cts.categorii.TestUrgente;
+import ro.acs.cts.categorii.TesteNormale;
 import ro.acs.cts.junit.clase.Grupa;
 import ro.acs.cts.junit.clase.Student;
 
@@ -41,17 +45,20 @@ public class TestGrupa {
 		
 	}
 	@Test(timeout=500)
+	@Category(TestUrgente.class)
 	public void testConstructorPerformanta()
 	{
 		Grupa grupa=new Grupa(1082);
 	}
 	@Test
+	@Category(TesteNormale.class)
 	public void testConstructorExistentaListaStudenti()
 	{
 		Grupa grupa=new Grupa(1083);
 		assertNotNull(grupa.getStudenti());
 	}
 	@Test
+	@Category({TestGetPromovabilitate.class,TesteNormale.class})
 	public void testPromovabilitate() {
 		Grupa grupa = new Grupa(1083);
 		for(int i=0; i<3; i++) {
@@ -69,6 +76,7 @@ public class TestGrupa {
 	}
 
 	@Test
+	@Category(TestGetPromovabilitate.class)
 	public void testPromovabilitateLowerBoundery()
 	{
 		Grupa grupa=new Grupa(1083);
@@ -82,6 +90,7 @@ public class TestGrupa {
 		assertEquals(promovabilitate, grupa.getPromovabilitate(),0.1);
 	}
 	@Test
+	@Category(TestGetPromovabilitate.class)
 	public void testPromovabilitateUpperBoundery()
 	{
 		Grupa grupa=new Grupa(1083);
@@ -95,6 +104,7 @@ public class TestGrupa {
 		assertEquals(promovabilitate, grupa.getPromovabilitate(),0.1);
 	}
 	@Test(expected=IndexOutOfBoundsException.class)
+	@Category(TestGetPromovabilitate.class)
 	public void testPromovabilitateBoundsException()
 	{
 		Grupa grupa=new Grupa(1083);

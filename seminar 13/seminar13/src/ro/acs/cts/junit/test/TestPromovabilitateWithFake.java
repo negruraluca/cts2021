@@ -3,13 +3,16 @@ package ro.acs.cts.junit.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import ro.acs.cts.categorii.TestGetPromovabilitate;
 import ro.acs.cts.clase.mockuri.StudentFake;
 import ro.acs.cts.junit.clase.Grupa;
 
 public class TestPromovabilitateWithFake {
 
 	@Test
+	@Category(TestGetPromovabilitate.class)
 	public void testPromovabilitateRight() {
 		Grupa grupa=new Grupa(1083);
 		for(int i=0;i<8;i++)
